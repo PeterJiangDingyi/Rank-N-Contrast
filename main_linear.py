@@ -331,9 +331,9 @@ def get_model(opt):
     # freeze the pretrained part
     #for(name, param)in model.encoder.named parameters():
     #param.requires_grad = False
-    optimizer = torch.optim.SGD(model.regressor.parameters(), lr=opt.lr,
+    # optimizer = torch.optim.SGD(model.regressor.parameters(), lr=opt.lr,
                                 momentum=opt.momentum, weight_decay=opt.weight_decay)
-    return model, optimizer
+    return model #, optimizer
 
 def main():
     opt = parse_option()
@@ -344,10 +344,10 @@ def main():
     # build model and criterion
     model, regressor, criterion = set_model(opt)
 
+    model = get_model(opt)
+    
     # build optimizer
-    # optimizer = set_optimizer(opt, regressor)
-
-    model, optimizer = get_model(opt)
+    optimizer = set_optimizer(opt, regressor)
     
     save_file_best = os.path.join(opt.save_folder, f"{opt.model_name}_best.pth")
     save_file_last = os.path.join(opt.save_folder, f"{opt.model_name}_last.pth")
