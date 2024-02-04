@@ -331,7 +331,7 @@ def get_model(opt):
     #for(name, param)in model.encoder.named parameters():
     #param.requires_grad = False
     optimizer = torch.optim.SGD(model.regressor.parameters(), lr=opt.lr,
-                                momentum=opt.momentum, weight_decay=opt.weight decay)
+                                momentum=opt.momentum, weight_decay=opt.weight_decay)
     return model, optimizer
 
 def main():
