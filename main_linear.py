@@ -191,7 +191,7 @@ def train(train_loader, model, regressor, optimizer, opt):
     model, regressor = model.cuda(), regressor.cuda()
 
     end = time.time()
-    for e in tqdm(range(opt.epoch)):
+    for e in tqdm(range(opt.epochs)):
         for idx, (images, labels, _) in enumerate(train_loader):
             images = images.cuda(non_blocking=True)
             labels = labels.cuda(non_blocking=True)
