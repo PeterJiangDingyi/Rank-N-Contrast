@@ -9,11 +9,10 @@ from dataset import *
 from utils import *
 
 import numpy  as np
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from scipy.stats import gmean
 import torch.nn as nn
 from tqdm import tqdm
-import collections
 
 print = logging.info
 
