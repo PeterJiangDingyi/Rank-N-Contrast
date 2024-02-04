@@ -13,6 +13,7 @@ from collections import defaultdict
 from scipy.stats import gmean
 import torch.nn as nn
 from tqdm import tqdm
+import collections
 
 print = logging.info
 
