@@ -316,7 +316,24 @@ def shot_metrics(preds, labels, train_labels, many_shot_thr=100, low_shot_thr=20
     shot_dict['low']['gmean'] = gmean(np.hstack(low_shot_gmean), axis=None).astype(float)
     
     return shot_dict
-    
+
+def get_model(opt):
+    model = Encoder_regression(groups=opt.groups, name='resnet18')
+    # load pretrained
+    ckpt = torch.load(opt.ckpt)
+    new_state_dict = OrderedDict()
+    for k,v in ckpt['model'].items():
+        key = k.replace('module.','')
+        keys = key.replace('encoder.', '')
+        new_state_dict[keys]=v
+    model.encoder.load_state_dict(new_state_dict)
+    # freeze the pretrained part
+    #for(name, param)in model.encoder.named parameters():
+    #param.requires_grad = False
+    optimizer = torch.optim.SGD(model.regressor.parameters(), lr=opt.lr,
+                                momentum=opt.momentum, weight_decay=opt.weight decay)
+    return model, optimizer
+
 def main():
     opt = parse_option()
 
@@ -327,8 +344,10 @@ def main():
     model, regressor, criterion = set_model(opt)
 
     # build optimizer
-    optimizer = set_optimizer(opt, regressor)
+    # optimizer = set_optimizer(opt, regressor)
 
+    model, optimizer = get_model(opt)
+    
     save_file_best = os.path.join(opt.save_folder, f"{opt.model_name}_best.pth")
     save_file_last = os.path.join(opt.save_folder, f"{opt.model_name}_last.pth")
     best_error = 1e5
