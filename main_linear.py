@@ -318,7 +318,8 @@ def shot_metrics(preds, labels, train_labels, many_shot_thr=100, low_shot_thr=20
     return shot_dict
 
 def get_model(opt):
-    model = Encoder_regression(groups=opt.groups, name='resnet18')
+    # model = Encoder_regression(groups=opt.groups, name='resnet18')
+    model = Encoder(name=opt.model)
     # load pretrained
     ckpt = torch.load(opt.ckpt)
     new_state_dict = OrderedDict()
