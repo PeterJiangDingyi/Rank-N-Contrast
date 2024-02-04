@@ -183,7 +183,7 @@ def validate(val_loader, model, regressor):
     return losses.avg
 '''
 
-def train_regressor(train_loader, model, regressor, optimizer, opt):
+def train(train_loader, model, regressor, optimizer, opt):
     model.eval()
     regressor.train()
 
