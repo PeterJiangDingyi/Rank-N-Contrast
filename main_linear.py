@@ -262,7 +262,7 @@ def validate(val_loader, model, regressor, train_labels=None):
 
 
 def shot_metrics(preds, labels, train_labels, many_shot_thr=100, low_shot_thr=20):
-    train_labels = np.array(train_labels).astype(int)
+    train_labels = np.array(train_labels.cpu()).astype(int)
 
     if isinstance(preds, torch.Tensor):
         preds = preds.detach().cpu().numpy()
