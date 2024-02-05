@@ -213,9 +213,9 @@ def train(train_loader, model, regressor, optimizer, opt):
 
 
 def validate(val_loader, model, regressor, train_labels=None):
-    batch_time = AverageMeter('Time', ':6.3f')
-    losses_mse = AverageMeter('Loss (MSE)', ':.3f')
-    losses_l1 = AverageMeter('Loss (L1)', ':.3f')
+    batch_time = AverageMeter()
+    losses_mse = AverageMeter()
+    losses_l1 = AverageMeter()
 
     criterion_mse = nn.MSELoss()
     criterion_l1 = nn.L1Loss()
