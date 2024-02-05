@@ -226,7 +226,7 @@ def validate(val_loader, model, regressor, train_labels=None):
     preds, labels = [], []
     with torch.no_grad():
         end = time.time()
-        for idx, (inputs, targets, _) in enumerate(val_loader):
+        for idx, (inputs, targets) in enumerate(val_loader):
             inputs, targets = inputs.cuda(non_blocking=True), targets.cuda(non_blocking=True)
             z = model(inputs)
             outputs = regressor(z)
