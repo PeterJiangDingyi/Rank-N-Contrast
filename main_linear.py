@@ -192,7 +192,7 @@ def train(train_loader, model, regressor, optimizer, opt):
 
     end = time.time()
     for e in tqdm(range(opt.epochs)):
-        for idx, (images, labels, _) in enumerate(train_loader):
+        for idx, (images, labels) in enumerate(train_loader):
             images = images.cuda(non_blocking=True)
             labels = labels.cuda(non_blocking=True)
             bsz = labels.shape[0]
