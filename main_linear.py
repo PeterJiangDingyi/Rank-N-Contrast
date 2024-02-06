@@ -120,7 +120,7 @@ def set_model(opt):
 
     return model, regressor, criterion
 
-'''
+
 def train(train_loader, model, regressor, criterion, optimizer, epoch, opt):
     model.eval()
     regressor.train()
@@ -316,7 +316,7 @@ def shot_metrics(preds, labels, train_labels, many_shot_thr=100, low_shot_thr=20
     shot_dict['low']['gmean'] = gmean(np.hstack(low_shot_gmean), axis=None).astype(float)
     
     return shot_dict
-
+'''
 def get_model(opt):
     # model = Encoder_regression(groups=opt.groups, name='resnet18')
     model = Encoder(name=opt.model)
@@ -367,7 +367,7 @@ def main():
         adjust_learning_rate(opt, optimizer, epoch)
 
         # train for one epoch
-        _, _, train_labels = train(train_loader, model, regressor, optimizer, opt)
+        train(train_loader, model, regressor, optimizer, opt)
 
         valid_error = validate(val_loader, model, regressor, train_labels)
         print('Val L1 error: {:.3f}'.format(valid_error))
