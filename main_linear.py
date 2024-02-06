@@ -282,10 +282,10 @@ def shot_metrics(preds, labels, train_labels, many_shot_thr=100, low_shot_thr=20
         l1_per_class.append(np.sum(np.abs(preds[labels == l] - labels[labels == l])))
         l1_all_per_class.append(np.abs(preds[labels == l] - labels[labels == l]))
 
-    many_shot_mse, median_shot_mse, low_shot_mse = [], [], []
-    many_shot_l1, median_shot_l1, low_shot_l1 = [], [], []
-    many_shot_gmean, median_shot_gmean, low_shot_gmean = [], [], []
-    many_shot_cnt, median_shot_cnt, low_shot_cnt = [], [], []
+    many_shot_mse, median_shot_mse, low_shot_mse = [0], [0], [0]
+    many_shot_l1, median_shot_l1, low_shot_l1 = [0], [0], [0]
+    many_shot_gmean, median_shot_gmean, low_shot_gmean = [0], [0], [0]
+    many_shot_cnt, median_shot_cnt, low_shot_cnt = [0], [0], [0]
 
     for i in range(len(train_class_count)):
         if train_class_count[i] > many_shot_thr:
