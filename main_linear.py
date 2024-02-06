@@ -209,7 +209,6 @@ def main():
     # build model and criterion
     model, regressor, criterion = set_model(opt)
 
-    model = get_model(opt)
     # build optimizer
     optimizer = set_optimizer(opt, regressor)
 
