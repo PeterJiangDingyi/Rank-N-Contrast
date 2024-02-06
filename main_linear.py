@@ -367,9 +367,9 @@ def main():
         adjust_learning_rate(opt, optimizer, epoch)
 
         # train for one epoch
-        train(train_loader, model, regressor, optimizer, opt)
+        train(train_loader, model, regressor, criterion, optimizer, epoch, opt)
 
-        valid_error = validate(val_loader, model, regressor, train_labels)
+        valid_error = validate(val_loader, model, regressor)
         print('Val L1 error: {:.3f}'.format(valid_error))
 
         is_best = valid_error < best_error
