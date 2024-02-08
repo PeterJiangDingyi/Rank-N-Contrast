@@ -208,10 +208,11 @@ def validate(val_loader, model, regressor):
 
 
 def main():
-    print("This script is working to fine-tune regressor")
-    print("This script is working to fine-tune regressor")
-    print("This script is working to fine-tune regressor")
     opt = parse_option()
+
+    print("This script is working to fine-tune regressor")
+    print("This script is working to fine-tune regressor")
+    print("This script is working to fine-tune regressor")
 
     # build data loader
     train_loader, val_loader, test_loader = set_loader(opt)
