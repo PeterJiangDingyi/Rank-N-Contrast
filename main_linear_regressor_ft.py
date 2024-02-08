@@ -103,7 +103,7 @@ def set_model(opt):
     regressor = torch.nn.Linear(dim_in, dim_out)
     
     if len(opt.regressor):
-        checkpoint = torch.load(save_file_best)
+        checkpoint = torch.load(opt.regressor)
         regressor.load_state_dict(checkpoint['state_dict'])
 
     ckpt = torch.load(opt.ckpt, map_location='cpu')
