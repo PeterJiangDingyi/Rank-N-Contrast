@@ -155,6 +155,9 @@ def validate(val_loader, model, regressor):
     return losses.avg
   
 if __name__ == '__main__':
+    print("This script is working to fine-tune the best ckpt")
+    print("This script is working to fine-tune the best ckpt")
+    print("This script is working to fine-tune the best ckpt")
     opt = parse_option()
 
     # build data loader
