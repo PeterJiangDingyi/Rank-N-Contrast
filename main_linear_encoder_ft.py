@@ -211,6 +211,9 @@ def main():
     opt = parse_option()
 
     print("This script is working to fine-tune Encoder")
+    print("This script is working to fine-tune Encoder")
+    print("This script is working to fine-tune Encoder")
+    
     # build data loader
     train_loader, val_loader, test_loader = set_loader(opt)
 
