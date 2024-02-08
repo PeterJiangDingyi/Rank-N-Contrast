@@ -39,6 +39,7 @@ def parse_option():
     parser.add_argument('--aug', type=str, default='crop,flip,color,grayscale', help='augmentations')
 
     parser.add_argument('--ckpt', type=str, default='', help='path to the trained encoder')
+    parser.add_argument('--regressor', type=str, default='', help='path to the regressor')
     
 
     opt = parser.parse_args()
@@ -100,6 +101,11 @@ def set_model(opt):
     dim_in = model_dict[opt.model][1]
     dim_out = get_label_dim(opt.dataset)
     regressor = torch.nn.Linear(dim_in, dim_out)
+    
+    if len(opt.regressor):
+        checkpoint = torch.load(save_file_best)
+        regressor.load_state_dict(checkpoint['state_dict'])
+
     ckpt = torch.load(opt.ckpt, map_location='cpu')
     state_dict = ckpt['model']
 
