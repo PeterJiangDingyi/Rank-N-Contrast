@@ -39,6 +39,7 @@ def parse_option():
     parser.add_argument('--aug', type=str, default='crop,flip,color,grayscale', help='augmentations')
 
     parser.add_argument('--ckpt', type=str, default='', help='path to the trained encoder')
+    
 
     opt = parser.parse_args()
 
